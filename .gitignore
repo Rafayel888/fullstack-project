@@ -1,0 +1,43 @@
+# Директории зависимостей
+node_modules/
+
+# Скомпилированные файлы и директории сборки
+dist/
+build/
+*.tsbuildinfo
+
+# Файлы окружения
+.env
+.env.local
+.env.development
+.env.production
+
+# Логи
+*.log
+logs/
+
+# Настройки IDE
+.vscode/
+.idea/
+
+# Coverage отчеты
+coverage/
+.nyc_output/
+
+# Файлы операционной системы
+.DS_Store
+Thumbs.db
+
+# Временные и кэш-файлы
+*.tmp
+*.temp
+.cache/
+.npm/
+.yarn/
+
+# Backend build files (if any)
+backend/build
+
+
+# React build files
+frontend/build
