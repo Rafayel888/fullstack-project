@@ -1,25 +1,56 @@
-````markdown
-# Project Backend
+📂 Backend - Node.js + Express + TypeScript
 
-This project uses **Node.js**, **Express**, and **TypeScript**.
+🔧 Используемые технологии
+Node.js (v20.17.0)
+Express – фреймворк для создания REST API
+TypeScript – для типизации кода
+MySQL – база данных (конфигурируется через .env)
 
-## Dependencies
+📦 Пакетный менеджер
+npm (v10.8.2)
 
-This project uses the following dependencies:
+# 📌 Backend (Node.js + Express + TypeScript)
 
-- **Express**: Web framework for Node.js.
-- **TypeScript**: For type-safe JavaScript.
-- **Cors**: Middleware for handling Cross-Origin Requests.
-- **Mongoose**: MongoDB object modeling.
-- **JWT**: For authentication with JSON Web Tokens.
-- **MySQL2** (or **Sequelize**): MySQL client for Node.js, used for connecting to and interacting with MySQL databases.
+Этот раздел содержит инструкции по запуску серверной части проекта.
 
-## Installation and Launch
+#### создайте каталог public/uploads/avatars
 
-Go to the **backend** directory, install dependencies, and start the server:
+## 🚀 Запуск локально
 
-```bash
+### 1️⃣ Установка зависимостей
+
+```sh
 npm install
+```
+
+### 2️⃣ Запуск в режиме разработки
+
+```sh
 npm start
 ```
-````
+
+## 🐳 Запуск через Docker
+
+### 1️⃣ Сборка образа
+
+```sh
+docker build -t backend .
+```
+
+### 2️⃣ Запуск контейнера
+
+```sh
+docker run -p 5000:5000 backend
+```
+
+### 3️⃣ Запуск через `docker-compose`
+
+```sh
+docker-compose up -d
+```
+
+### 1️⃣ docker exec -it <container_id> bash
+
+### 2️⃣ npm run migrate
+
+## ✅ Готово! Теперь ваш backend работает! 🎨🚀

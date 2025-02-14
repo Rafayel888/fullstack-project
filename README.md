@@ -1,18 +1,116 @@
-# Fullstack Project
+# 🚀 Fullstack Project
 
-This project consists of two parts:
+## 📂 Структура проекта
 
-- **frontend/**: Frontend on React and TypeScript.
-- **backend/**: Backend on Node.js and Express with TypeScript.
+Проект состоит из трех частей:
 
-## Installation
+- **📁 frontend/** – React + TypeScript
+- **📁 backend/** – Node.js + Express + TypeScript
+- **📁 DB/** – MySQL 8.0
 
-### Frontend
+## 📌 Документация
 
-Go to the **frontend** folder, install dependencies and start the server:
+✅ В корне проекта есть **README.md** – инструкции по запуску всего проекта
+✅ В **backend/** есть **README.md** – гайд по серверной части
+✅ В **frontend/** есть **README.md** – гайд по клиентской части
 
-```bash
-cd frontend
-npm install
-npm start
+## 🔧 Используемые технологии
+
+### 💻 Backend:
+
+- Node.js (v20.17.0)
+- Express
+- TypeScript
+
+### 🎨 Frontend:
+
+- React
+- TypeScript
+- SCSS
+
+### 📦 Пакетный менеджер:
+
+- npm (v10.8.2)
+
+### 🐳 Контейнеризация:
+
+- Docker
+- Docker Compose
+
+## 🚀 Как запустить проект через Docker
+
+### 2️⃣ Создайте `.env` файлы
+
+создайте `.env` файл для **backend**
+
+```sh
+cp backend/.env.example backend/.env
 ```
+
+🔹 Отредактируйте `.env` файлы и укажите необходимые переменные (например, данные для подключения к БД).
+
+### 3️⃣ Запустите проект с помощью Docker Compose
+
+Перейдите в корень проекта и выполните команду:
+
+```sh
+docker-compose up --build
+```
+
+Эта команда соберет и запустит контейнеры **backend**, **frontend** и **MySQL**.
+
+потом вовремя разработки можете использовать :
+
+```sh
+docker-compose build --no-cache
+```
+
+Если возникнут проблемы слой
+
+### 4️⃣ Проверьте работу сервиса
+
+После успешного запуска контейнеров:
+
+- **Frontend** будет доступен по адресу: `http://localhost:5173`
+- **Backend** будет работать на `http://localhost:5000`
+- **MySQL** будет работать на `localhost:3306`
+
+### 5️⃣ Остановка контейнеров
+
+Чтобы остановить и удалить запущенные контейнеры, выполните команду:
+
+```sh
+docker-compose down
+```
+
+### 6️⃣ Очистка контейнеров и данных
+
+Если вам нужно удалить все контейнеры и тома базы данных, используйте:
+
+```sh
+docker-compose down -v
+```
+
+## 🛠 Полезные команды
+
+📌 **Проверить список запущенных контейнеров:**
+
+```sh
+docker ps
+```
+
+📌 **Просмотреть логи контейнера (например, backend):**
+
+```sh
+docker logs -f <container_id>
+```
+
+📌 **Перезапустить контейнер:**
+
+```sh
+docker restart <container_id>
+```
+
+## 🎯 Заключение
+
+Теперь у вас есть готовая инструкция по запуску проекта через Docker! 🚀 Если у вас возникли вопросы, проверьте `.env` файлы и убедитесь, что Docker установлен корректно. Happy coding! 😎

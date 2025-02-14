@@ -5,9 +5,15 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - '5173:5173'
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     networks:
       - app-network
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run dev
 
   backend:
     build:
@@ -16,26 +22,40 @@ services:
     ports:
       - '5000:5000'
     environment:
-      - MYSQL_DB_HOST=mysql
-      - MYSQL_DB_PORT=3306
-      - MYSQL_DB_NAME=main_database
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=main_database
+      - DB_USER=root
+      - DB_PASSWORD=rootpassword
+      - CHOKIDAR_USEPOLLING=true
     volumes:
       - ./backend:/app
+    command: npm start
     networks:
       - app-network
     depends_on:
-      - mysql
-
+      mysql:
+        condition: service_healthy
+    restart: always
   mysql:
-    image: mysql:latest
+    image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_PASSWORD: rootpassword
       MYSQL_DATABASE: main_database
+      TZ: 'Asia/Yerevan'
+    ports:
+      - '3306:3306'
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
       - app-network
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
 
 networks:
   app-network:

@@ -1,12 +1,12 @@
-import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import MyRoutes from './routes/MyRoutes';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1>Hello World</h1>
-      </header>
-    </div>
+    <>
+      <ToastContainer position='top-right' autoClose={2500} />
+      <MyRoutes />
+    </>
   );
 }
 

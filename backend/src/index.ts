@@ -1,12 +1,31 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import userRoutes from './routes/userRoutes';
+import path from 'path';
+import errorHandler from './middleware/error-middleware';
+
+dotenv.config();
 
 const app = express();
-const port = 5000;
+app.use(express.json());
+app.use('/uploads', express.static(path.resolve('public/uploads')));
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, welcome to the product dashboard!!!');
-});
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  }),
+);
+app.use(cookieParser());
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.use('/api', userRoutes);
+
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 5173;
+app.listen(PORT, () => {
+  console.log(`✅ Сервер запущен на порту ${PORT}`);
 });

@@ -1,24 +1,39 @@
-````markdown
-# Project Frontend
+# 📌 Frontend (React + TypeScript)
 
-This project uses **React JS** and **TypeScript**.
+Этот раздел содержит инструкции по запуску клиентской части проекта.
 
-## Dependencies
+## 🚀 Запуск локально
 
-This project uses the following dependencies:
+### 1️⃣ Установка зависимостей
 
-- **React**: JavaScript library for building user interfaces.
-- **TypeScript**: For type-safe JavaScript.
-- **React Router**: For routing in React applications.
-- **Axios**: For making HTTP requests to the backend.
-- **Styled Components / Sass**: For styling the app. We use Sass for more complex styles and Pure CSS for simpler or global styling.
-
-## Installation and Launch
-
-Go to the **frontend** directory and follow these steps:
-
-```bash
+```sh
 npm install
-npm start
 ```
-````
+
+### 2️⃣ Запуск в режиме разработки
+
+```sh
+npm run dev
+```
+
+## 🐳 Запуск через Docker
+
+### 1️⃣ Сборка образа
+
+```sh
+docker build -t frontend .
+```
+
+### 2️⃣ Запуск контейнера
+
+```sh
+docker run -p 5173:5173 frontend
+```
+
+### 3️⃣ Запуск через `docker-compose`
+
+```sh
+docker-compose up -d
+```
+
+## ✅ Готово! Теперь ваш frontend работает! 🎨🚀
